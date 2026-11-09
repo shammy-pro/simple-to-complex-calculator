@@ -1,7 +1,7 @@
 """calculator"""
 import tkinter as tk
 import fractions
-# from math import exp as expo
+from math import exp as expo
 # to import the math module and the exp function from it,
 #  used to calculate the exponential of a number.
 from simpleeval import simple_eval
@@ -55,6 +55,17 @@ def square_func():
     try:
         value = float(display.get())
         result = square(value)
+        display.delete(0, tk.END)
+        display.insert(0, str(result))
+    except ValueError:
+        pass
+
+
+def exp_func():
+    """to calculate the exponential of the current display value"""
+    try:
+        value = float(display.get())
+        result = expo(value)
         display.delete(0, tk.END)
         display.insert(0, str(result))
     except ValueError:
@@ -305,7 +316,7 @@ btn_6 = tk.Button(root, text="6", font=("times new roman", 18),
                   command=lambda: add_to_display("6"))
 btn_6.grid(row=9, column=2,
            padx=10, pady=10, sticky="nsew")
-btn_multiply = tk.Button(root, text="x", font=("times new roman", 18),
+btn_multiply = tk.Button(root, text="*", font=("times new roman", 18),
                          bg="#AD0808", fg="white", borderwidth=0, height=1, width=1,
                          command=lambda: add_to_display("x"))
 btn_multiply.grid(row=9, column=3,
@@ -357,9 +368,9 @@ btn_pie = tk.Button(root, text="π", font=("times new roman", 18),
                     command=lambda: add_to_display("π"))
 btn_pie.grid(row=11, column=2,
              padx=10, pady=10, sticky="nsew")
-btn_answer = tk.Button(root, text="ans", font=("times new roman", 18),
+btn_answer = tk.Button(root, text="Ans", font=("times new roman", 18),
                        bg="#AD0808", fg="white", borderwidth=0, height=1, width=1,
-                       command=lambda: add_to_display("ans"))
+                       command=lambda: add_to_display("Ans"))
 btn_answer.grid(row=11, column=3,
                 padx=10, pady=10, sticky="nsew")
 btn_equall = tk.Button(root, text="=", font=("times new roman", 18),
